@@ -133,7 +133,18 @@ class ProductRepositoryTest {
         }
     }
 
+    @Test
+    public void auditingTest(){
+        Product product = new Product();
+        product.setName("pencil");
+        product.setPrice(1000);
+        product.setStock(100);
 
+        Product savedProduct = productRepository.save(product);
+
+        System.out.println("productName : " + savedProduct.getName());
+        System.out.println("createdAt : " + savedProduct.getCreatedAt());
+    }
 
 
 }
