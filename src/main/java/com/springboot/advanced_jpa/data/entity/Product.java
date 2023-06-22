@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@ToString( exclude="name" )
+@EqualsAndHashCode( callSuper = true )
+@ToString( callSuper = true )
 @Table( name="product" )
 public class Product extends BaseEntity {
 
@@ -27,6 +27,10 @@ public class Product extends BaseEntity {
 
     @Column(nullable = false)
     private Integer stock;
+
+    @OneToOne(mappedBy = "product")
+    @ToString.Exclude
+    private ProductDetail productDetail;
 
     //private LocalDateTime createdAt;
 
